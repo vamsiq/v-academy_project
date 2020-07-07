@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>V-Academy</title>
+<style>
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  background-color:#0000CD;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.i1{
+width:1630px;
+height:800px;
+background-size:cover;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: 	#6A6C6E;
+   color: white;
+   text-align: center;
+}	
+
+
+
+
+</style>
+
+</head>
+<body style="background-color: #33b5e5">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand mx-auto" href="#" th:href="@{/}">V-Academy</a>
+				<a class="navbar-brand mx-auto" href="#" th:href="@{/registration}">Registration</a>
+			</div>
+		</div>
+		
+	</nav>
+	<br>
+	<br>
+	<br>
+	<!--  <div class="container">
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Login page</h1>
+				<form th:action="@{/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or	password.</div>
+					</div>
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You have been logged out.</div>
+					</div>
+					<div class="form-group">
+						<label for="username">Username</label>: <input type="text"
+							id="username" name="username" class="form-control"
+							autofocus="autofocus" placeholder="Username" />
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Password" />
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Log In" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<span>New user? <a href="/" th:href="@{/registration}">Register	here</a></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>-->
+	<div class="col-3 col-s-3 menu">
+    <ul>
+      <li><a href="new" >WEB DEVELOPEMENT</a></li>
+      <li><a href="#" th:href="@{/}">MOBILE DEVELOPEMENT</a></li>
+      <li><a href="#" th:href="@{/}">DATA SCIENCE</a></li>
+      <li><a href="#" th:href="@{/}">CLOUD COMPUTING</a></li>
+      <li><a href="#" th:href="@{/}">ARTIFICIAL INTELLIGENCE</a></li>
+      <li><a href="#" th:href="@{/}">ANDROID DEVELOPEMENT</a></li>
+    </ul>
+  </div>
+
+  <div class="col-9 col-s-9">
+
+				<form th:action="@{/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or	password.</div>
+					</div>
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You have been logged out.</div>
+					</div>
+					<div class="form-group">
+						<label for="username">Username</label>: <input type="text"
+							id="username" name="username" class="form-control"
+							autofocus="autofocus" placeholder="Username" />
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Password" />
+					</div>
+					<div class="form-group">
+						<input type="submit" name="login-submit" id="login-submit"
+								class="form-control btn btn-primary" value="Log In" />
+					</div>
+					<div class="form-group">
+						<span>New user? <a href="/" th:href="@{/registration}"><b>Register here</b></a></span>
+					</div>
+				</form>
+    </div>
+	  <br>
+	  <br>
+  
+  
+  <div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>Me:</h2>
+      <p>Sandeep</p>
+      <h2>What</h2>
+      <p>Full Stack Developer</p>
+      <h2>Where:</h2>
+      <p>Virtusa</p>
+    </div>
+  </div>
+
+  <div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>Me:</h2>
+      <p>Vamsi Krishna</p>
+      <h2>What</h2>
+      <p>Full Stack Developer</p>
+      <h2>Where:</h2>
+      <p>Virtusa</p>
+    </div>
+  </div>
+
+  <div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>Me:</h2>
+      <p>Bhargava</p>
+      <h2>What</h2>
+      <p>Full Stack Developer</p>
+      <h2>Where:</h2>
+      <p>Virtusa</p>
+    </div>
+  </div>
+  <div class="footer">
+  <p>Copy Rights by virtusa</p>
+</div>
+
+
+	
+	
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<title>Create New Course</title>
+<style>
+#courses {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin:0 auto;
+}
+
+#courses td, #courses th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#courses tr:nth-child(even){background-color: #f2f2f2;}
+
+#courses tr:hover {background-color: #ddd;}
+
+#courses th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #00CCFF;
+  color: white;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+			</div>
+				<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="view">View Courses</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse" >
+				<ul class="nav navbar-nav navbar-right">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+			
+		</div>
+	</nav>
+	<br><br><br><br>
+	<!--  
+	<div align="center">
+		<h1>Create New Course</h1>
+		<br />
+		<form action="#" th:action="@{/save}" th:object="${product}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td><label for="course" >Choose a course:</label></td>
+					<td>
+					<select name="course" id="course" th:field="*{name}">
+  							<option value="WebDevelopement">Web Developement</option>
+  							<option value="MobileDevelopement">Mobile Developement</option>
+  							<option value="DataScience">Data Science</option>
+  							<option value="ArtificialIntelligence">AI</option>
+  							<option value="CloudComputing">Cloud Computing</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Topic:</td>
+					<td><input type="text" th:field="*{brand}" /></td>
+					
+				</tr>
+				<tr>
+					<td>Uploded By:</td>
+					<td><input type="text" th:field="*{madein}" /></td>
+					
+				</tr>
+				<tr>
+					<td>courseId</td>
+					<td>
+						<select name="courseid" id="cid" th:field="*{price}">
+  							<option value="1">1</option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4">4</option>
+  							<option value="5">5</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Link:</td>
+					<td><input type="text" th:field="*{link}" /></td>
+				</tr>							
+				<tr>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	-->
+	<form action="#" th:action="@{/save}" th:object="${product}"
+			method="post">
+	<table id="courses">
+	<tr>
+		<th colspan="2">
+		Upload New Courses
+		</th>
+	</tr>
+  <tr>
+					<td><label for="course" >Choose a course:</label></td>
+					<td>
+					<select name="course" id="course" th:field="*{name}">
+  							<option value="WebDevelopement">Web Developement</option>
+  							<option value="MobileDevelopement">Mobile Developement</option>
+  							<option value="DataScience">Data Science</option>
+  							<option value="ArtificialIntelligence">AI</option>
+  							<option value="CloudComputing">Cloud Computing</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Topic:</td>
+					<td><input type="text" th:field="*{brand}" /></td>
+					
+				</tr>
+				<tr>
+					<td>Uploded By:</td>
+					<td><input type="text" th:field="*{madein}" /></td>
+					
+				</tr>
+				<tr>
+					<td>courseId</td>
+					<td>
+						<select name="courseid" id="cid" th:field="*{price}">
+  							<option value="1">1</option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4">4</option>
+  							<option value="5">5</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Link:</td>
+					<td><input type="text" th:field="*{link}" /></td>
+				</tr>							
+				<tr>
+				<td></td>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+ </table></form>
+	
+</body>
+</html>

@@ -1,0 +1,17 @@
+com\virtusa\springboot\web\dto\UserRegistrationDto.class
+com\virtusa\springboot\web\MainController.class
+com\virtusa\springboot\repository\UserRepository.class
+com\virtusa\springboot\config\SecurityConfiguration.class
+com\virtusa\springboot\constraint\FieldMatch$List.class
+com\virtusa\springboot\model\User.class
+com\virtusa\springboot\service\UserServiceImpl.class
+com\virtusa\springboot\web\AppController.class
+com\virtusa\springboot\model\Role.class
+com\virtusa\springboot\constraint\FieldMatch.class
+com\virtusa\springboot\constraint\FieldMatchValidator.class
+com\virtusa\springboot\model\Product.class
+com\virtusa\springboot\web\UserRegistrationController.class
+com\virtusa\springboot\service\UserService.class
+com\virtusa\springboot\repository\ProductRepository.class
+com\virtusa\springboot\service\ProductService.class
+com\virtusa\springboot\Application.class

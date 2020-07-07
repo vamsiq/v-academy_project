@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title sec:authentication="principal.username">User</title>
+<style>
+#courses {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin:0 auto;
+}
+
+#courses td, #courses th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#courses tr:nth-child(even){background-color: #f2f2f2;}
+
+#courses tr:hover {background-color: #ddd;}
+
+#courses th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #00CCFF;
+  color: white;
+}
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	th { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	th:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+			</div>
+				<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="view">View Courses</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse" >
+				<ul class="nav navbar-nav navbar-right">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+			
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<!--  <div class="container">
+		<h2>Welcome To V-Academy</h2>
+
+		<p>
+			Welcome <span sec:authentication="principal.username">User</span>
+		</p>
+		
+	</div>
+-->
+<!-- <div align="center">
+    <h1>Course List</h1>
+    <br/><br/>
+    <table border="2" cellpadding="10" cellspadding="5">
+        <thead>
+            <tr>
+                <th>Video ID</th>
+                <th>Course Name</th>
+                <th>Topic</th>
+                <th>Uploaded By</th>
+                <th>Course Subject ID</th>
+                <th>Video Link</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">Video ID</td>
+                <td th:text="${product.name}"> Course Name</td>
+                <td th:text="${product.brand}">Topic</td>
+                <td th:text="${product.madein}">Uploaded By</td>
+                <td th:text="${product.price}">Course Subject ID</td>
+                <td th:text="${product.link}">Video Link</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+--><br><br><br>
+<table id="courses"  >
+  <thead>
+            <tr>
+                <th>Video ID</th>
+                <th>Course Name</th>
+                <th>Topic</th>
+                <th>Uploaded By</th>
+                <th>Course Subject ID</th>
+                <th>Video Link</th>
+            </tr>
+   </thead>
+  <tbody>
+            <tr th:each="product : ${ls}" id="t2">
+            	<td th:text="${product.id}">Video ID</td>
+                <td th:text="${product.name}"> Course Name</td>
+                <td th:text="${product.brand}">Topic</td>
+                <td th:text="${product.madein}">Uploaded By</td>
+                <td th:text="${product.price}" id="t1">Course Subject ID</td>
+                <td th:text="${product.link}">Video Link</td>
+            </tr>
+        </tbody>
+  
+ </table>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
